@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+    nginx_reverseproxy:
+      container_name: nginx_reverseproxy
+      image: nginx
+      build: ./
+      ports:
+        - 88:80
+      restart: always
+      networks:
+        - shared-network
+networks:
+  #default:
+   #external:
+     name: shared-network
+    

@@ -1,0 +1,22 @@
+upstream composetest{
+    server 192.168.192.2:5000;
+}
+
+upstream demo2test{
+    server 192.168.192.4:5000;
+}
+
+server {
+    listen    80;
+    server_name mialytest.dc3.in.viadialog.com;
+
+    location /testfirst {
+        include proxy_params;
+        proxy_pass http://composetest;
+    }
+
+    location /testsecond {
+        include proxy_params;
+        proxy_pass http://demo2test;
+    }
+}
